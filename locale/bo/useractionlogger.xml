@@ -1,2 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<localization><entity id="insert-styledefinition"><locale lang="fr">insert.styledefinition {documentlabel}</locale></entity><entity id="log-insert-styledefinition"><locale lang="fr">log-insert-styledefinition</locale></entity><entity id="update-styledefinition"><locale lang="fr">update.styledefinition {documentlabel}</locale></entity><entity id="log-update-styledefinition"><locale lang="fr">log-update-styledefinition</locale></entity><entity id="activate-styledefinition"><locale lang="fr">activate.styledefinition {documentlabel}</locale></entity><entity id="log-activate-styledefinition"><locale lang="fr">log-activate-styledefinition</locale></entity><entity id="delete-styledefinition"><locale lang="fr">delete.styledefinition {documentlabel}</locale></entity><entity id="log-delete-styledefinition"><locale lang="fr">log-delete-styledefinition</locale></entity><entity id="insert-styledefinitionfortheme"><locale lang="fr">insert.styledefinitionfortheme {documentlabel}</locale></entity><entity id="log-insert-styledefinitionfortheme"><locale lang="fr">log-insert-styledefinitionfortheme</locale></entity><entity id="update-styledefinitionfortheme"><locale lang="fr">update.styledefinitionfortheme {documentlabel}</locale></entity><entity id="log-update-styledefinitionfortheme"><locale lang="fr">log-update-styledefinitionfortheme</locale></entity><entity id="delete-styledefinitionfortheme"><locale lang="fr">delete.styledefinitionfortheme {documentlabel}</locale></entity><entity id="log-delete-styledefinitionfortheme"><locale lang="fr">log-delete-styledefinitionfortheme</locale></entity><entity id="move-systemfolder"><locale lang="fr">move.systemfolder {destinationlabel} {documentlabel}</locale></entity><entity id="log-move-systemfolder"><locale lang="fr">log-move-systemfolder</locale></entity></localization>
+<localization>
+	<entity id="insert-styledefinition">
+		<locale lang="fr">insert.styledefinition {documentlabel}</locale>
+	</entity>
+	<entity id="log-insert-styledefinition">
+		<locale lang="fr">log-insert-styledefinition</locale>
+	</entity>
+	<entity id="update-styledefinition">
+		<locale lang="fr">update.styledefinition {documentlabel}</locale>
+	</entity>
+	<entity id="log-update-styledefinition">
+		<locale lang="fr">log-update-styledefinition</locale>
+	</entity>
+	<entity id="activate-styledefinition">
+		<locale lang="fr">activate.styledefinition {documentlabel}</locale>
+	</entity>
+	<entity id="log-activate-styledefinition">
+		<locale lang="fr">log-activate-styledefinition</locale>
+	</entity>
+	<entity id="delete-styledefinition">
+		<locale lang="fr">delete.styledefinition {documentlabel}</locale>
+	</entity>
+	<entity id="log-delete-styledefinition">
+		<locale lang="fr">log-delete-styledefinition</locale>
+	</entity>
+	<entity id="insert-styledefinitionfortheme">
+		<locale lang="fr">insert.styledefinitionfortheme {documentlabel}</locale>
+	</entity>
+	<entity id="log-insert-styledefinitionfortheme">
+		<locale lang="fr">log-insert-styledefinitionfortheme</locale>
+	</entity>
+	<entity id="update-styledefinitionfortheme">
+		<locale lang="fr">update.styledefinitionfortheme {documentlabel}</locale>
+	</entity>
+	<entity id="log-update-styledefinitionfortheme">
+		<locale lang="fr">log-update-styledefinitionfortheme</locale>
+	</entity>
+	<entity id="delete-styledefinitionfortheme">
+		<locale lang="fr">delete.styledefinitionfortheme {documentlabel}</locale>
+	</entity>
+	<entity id="log-delete-styledefinitionfortheme">
+		<locale lang="fr">log-delete-styledefinitionfortheme</locale>
+	</entity>
+	<entity id="move-systemfolder">
+		<locale lang="fr">move.systemfolder {destinationlabel} {documentlabel}</locale>
+	</entity>
+	<entity id="log-move-systemfolder">
+		<locale lang="fr">log-move-systemfolder</locale>
+	</entity>
+	<entity id="insert-folder">
+		<locale lang="fr">insert.folder {documentlabel}</locale>
+	</entity>
+	<entity id="log-insert-folder">
+		<locale lang="fr">log-insert-folder</locale>
+	</entity>
+</localization>

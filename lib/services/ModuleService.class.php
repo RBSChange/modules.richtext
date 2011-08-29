@@ -79,6 +79,7 @@ class richtext_ModuleService extends ModuleBaseService
 	{
 		$this->rebuildGlobalCss(false);
 		$this->rebuildThemesCss(false);
+		$this->rebuildDefaultRichTextCss();
 		
 		// Clear caches.
 		CacheService::getInstance()->clearCssCache();
@@ -202,10 +203,8 @@ class richtext_ModuleService extends ModuleBaseService
 	 */
 	public function applyToPageTemplate($template)
 	{
-		Framework::fatal(__METHOD__ . ' ' . $template->getId());
 		$theme = f_util_ArrayUtils::firstElement($template->getThemeArrayInverse());
 		$css = 'modules.richtext.richtext' . ($theme ? ('_' . $theme->getCodename()) : '');
-		Framework::fatal(__METHOD__ . ' ' . $css);
 		if (!$template->getCssscreen())
 		{
 			$template->setCssscreen($css);
@@ -215,5 +214,20 @@ class richtext_ModuleService extends ModuleBaseService
 			$template->setCssscreen($template->getCssscreen() . ',' . $css);
 		}
 		$template->save();
+	}
+	
+	public function rebuildDefaultRichTextCss()
+	{
+		$path = StyleService::getInstance()->getSourceLocation('modules.uixul.cRichtextField');
+		$buildPath = f_util_FileUtils::buildOverridePath('modules', 'uixul', 'style', 'cRichtextField.css');			
+		if ($path !== null)
+		{
+			$originalContent = file_get_contents($path);
+			$contents = '@import url(/modules/richtext/style/richtext.css);';
+			if (strpos($originalContent, $contents) === false)
+			{
+				f_util_FileUtils::writeAndCreateContainer($buildPath, $originalContent . PHP_EOL . $contents, f_util_FileUtils::OVERRIDE);
+			}
+		}
 	}
 }

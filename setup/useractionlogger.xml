@@ -9,4 +9,5 @@
   <actiondef modulename="richtext" actionname="update.styledefinitionfortheme" label="modules.richtext.bo.useractionlogger.update-styledefinitionfortheme"/>
   <actiondef modulename="richtext" actionname="delete.styledefinitionfortheme" label="modules.richtext.bo.useractionlogger.delete-styledefinitionfortheme"/>
   <actiondef modulename="richtext" actionname="move.systemfolder" label="modules.richtext.bo.useractionlogger.move-systemfolder"/>
+  <actiondef modulename="richtext" actionname="insert.folder" label="modules.richtext.bo.useractionlogger.insert-folder"/>
 </script>
