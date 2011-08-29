@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+	<action name="createFolder">
+		<parameter name="listWidget" />
+		<body><![CDATA[this.createDocumentEditor('modules_richtext_folder', listWidget.getSelectedItems()[0].id);]]></body>
+	</action>
+	<action name="createStyledefinition">
+		<parameter name="listWidget" />
+		<body><![CDATA[this.createDocumentEditor('modules_richtext_styledefinition', listWidget.getSelectedItems()[0].id);]]></body>
+	</action>
+	<action name="import">
+		<parameter name="listWidget" />
+		<body><![CDATA[this.executeJSON("Import", {lang: this.getContextLang()});]]></body>
+	</action>
+	<action name="applyUpdates">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+			getController().alert("&amp;modules.richtext.bo.actions.Applying-updates;");
+			this.executeJSON("ApplyUpdates", {lang: this.getContextLang()});
+		]]></body>
+	</action>
+	<action name="onApplyUpdatesSuccess">
+		<parameter name="result" />
+		<body><![CDATA[
+			getController().alert("&amp;modules.richtext.bo.actions.Updates-applied;");
+		]]></body>
+	</action>
+	<action name="createStyledefinitionfortheme">
+		<parameter name="listWidget" />
+		<body><![CDATA[
+	    	var id = listWidget.getSelectedIds()[0];
+			var uri = ['richtext', 'openDocument', 'modules_richtext_styledefinitionfortheme', id, 'themespecialization'].join(',');
+			openActionUri(uri);
+		]]></body>
+	</action>
+</actions>

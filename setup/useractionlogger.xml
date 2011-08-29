@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script>
+  <binding fileName="modules/useractionlogger/persistentdocument/import/useractionlogger_binding.xml"/>
+  <actiondef modulename="richtext" actionname="insert.styledefinition" label="modules.richtext.bo.useractionlogger.insert-styledefinition"/>
+  <actiondef modulename="richtext" actionname="update.styledefinition" label="modules.richtext.bo.useractionlogger.update-styledefinition"/>
+  <actiondef modulename="richtext" actionname="activate.styledefinition" label="modules.richtext.bo.useractionlogger.activate-styledefinition"/>
+  <actiondef modulename="richtext" actionname="delete.styledefinition" label="modules.richtext.bo.useractionlogger.delete-styledefinition"/>
+  <actiondef modulename="richtext" actionname="insert.styledefinitionfortheme" label="modules.richtext.bo.useractionlogger.insert-styledefinitionfortheme"/>
+  <actiondef modulename="richtext" actionname="update.styledefinitionfortheme" label="modules.richtext.bo.useractionlogger.update-styledefinitionfortheme"/>
+  <actiondef modulename="richtext" actionname="delete.styledefinitionfortheme" label="modules.richtext.bo.useractionlogger.delete-styledefinitionfortheme"/>
+  <actiondef modulename="richtext" actionname="move.systemfolder" label="modules.richtext.bo.useractionlogger.move-systemfolder"/>
+</script>

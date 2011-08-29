@@ -1,0 +1,32 @@
+<localization>
+	<entity id="document-name">
+		<locale lang="fr">spécialisation d'une définition de style par thème</locale>
+	</entity>
+	<entity id="label">
+		<locale lang="fr">libellé</locale>
+	</entity>
+	<entity id="theme">
+		<locale lang="fr">thème</locale>
+	</entity>
+	<entity id="theme-help">
+		<locale lang="fr">Thème sur lequel cette spécialisation s'applique.</locale>
+	</entity>
+	<entity id="definition">
+		<locale lang="fr">définition</locale>
+	</entity>
+	<entity id="definition-help">
+		<locale lang="fr">Définition de style spécialisée par ce document.</locale>
+	</entity>
+	<entity id="css">
+		<locale lang="fr">code CSS</locale>
+	</entity>
+	<entity id="css-help">
+		<locale lang="fr">Code CSS associé à ce style.</locale>
+	</entity>
+	<entity id="globalcss">
+		<locale lang="fr">code CSS global</locale>
+	</entity>
+	<entity id="globalcss-help">
+		<locale lang="fr">Code CSS associé à ce style indépendamment du thème.</locale>
+	</entity>
+</localization>

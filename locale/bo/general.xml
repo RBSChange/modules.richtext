@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localization>
+	<entity id="module-name">
+		<locale lang="fr">richtext</locale>
+	</entity>
+	<entity id="system-folder-name">
+		<locale lang="fr">richtext</locale>
+	</entity>
+	<entity id="column.tagname">
+		<locale lang="fr">balise</locale>
+	</entity>
+	<entity id="column.tagclass">
+		<locale lang="fr">classe</locale>
+	</entity>
+	<entity id="column.tagtype">
+		<locale lang="fr">type</locale>
+	</entity>
+	<entity id="tagname-and-class-conflict">
+		<locale lang="fr">Il y a déjà une définition de style pour la balise '{tagName}' et la classe '{tagClass}'.</locale>
+	</entity>
+	<entity id="defintion-and-theme-conflict">
+		<locale lang="fr">Il y a déjà une spécialisation de cette définition de style le thème '{theme}'.</locale>
+	</entity>
+	<entity id="invalid-css">
+		<locale lang="fr">Le code CSS saisi est invalide. L'erreur retournée est la suivante : {message}</locale>
+	</entity>
+</localization>

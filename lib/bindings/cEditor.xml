@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<bindings xmlns="http://www.mozilla.org/xbl" xmlns:xbl="http://www.mozilla.org/xbl" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<binding id="cThemeSpecializationPanel" extends="layout.cDocumentEditor#cDocumentEditorPanel">
+		<resources>
+			<stylesheet src="modules.uixul.cEditorGrid" />
+			<stylesheet src="modules.catalog.cEditorList" />
+		</resources>
+		<content>
+			<xul:vbox flex="1">
+				<xul:cmessageinfo anonid="message" />
+				<xul:vbox flex="1">
+					<xul:hbox>
+						<xul:menulist anonid="themes" style="min-width: 250px;">
+							<xul:menupopup anonid="themeslist" />
+						</xul:menulist>
+						<xul:button disabled="true" anonid="addspecializationbutton" label="&amp;modules.richtext.bo.doceditor.Button-add-specialization;"
+							oncommand="addThemeSpecialization()" />
+					</xul:hbox>
+					<xul:scrollbox anonid="scrollctrl" flex="1" class="editordatacontainer" orient="vertical">
+						<xul:cthemespecializationgrid anonid="themeSpecializationGrid" flex="1" />
+						<xul:spacer flex="1" />
+					</xul:scrollbox>
+				</xul:vbox>
+			</xul:vbox>
+		</content>
+		<implementation>
+			<property name="gridlist" readonly="true">
+				<getter><![CDATA[
+					return this.getElementByAnonId('themeSpecializationGrid');
+				]]></getter>
+			</property>
+			
+			<method name="onCloseEditor">
+				<body><![CDATA[	
+					var gridlist = this.gridlist;
+					if ('initJSONDataset' in gridlist)
+					{
+						gridlist.initJSONDataset(null);
+					}
+				]]></body>
+			</method>
+		
+			<method name="getInitializeParameters">
+				<body><![CDATA[
+					return {
+						action: 'InitializeThemeSpecializationPanel',
+						cmpref: this.documentEditor.documentid, 
+						lang : this.documentEditor.module.getContextLang()
+					};
+				]]></body>
+			</method>
+
+			<method name="fireInitializeComplete">
+				<parameter name="result" />
+				<body><![CDATA[
+					if (result.status == 'OK')
+					{
+						var contents = result.contents;
+						var themes = contents.themes;
+						this.getElementByAnonId('addspecializationbutton').disabled = (themes.length == 0);
+						
+						var list = this.getElementByAnonId('themes')
+						while (list.hasChildNodes())
+						{
+							list.removeChild(list.lastChild);
+						}
+						for (var i = 0; i < themes.length; i++)
+						{
+							list.appendItem(themes[i].label, themes[i].id);
+						}
+										
+						var dataset = (contents.nodes.length > 0) ? contents.nodes : null;
+						this.gridlist.initJSONDataset(dataset);	
+						this.gridlist.panel = this;
+										
+						this.collapseContentZone(false);
+						this.fireEvent("panelInitializeComplete");
+						this.gotoTop();
+					}
+					else
+					{
+						this.gridlist.initJSONDataset(null);
+						this.showErrorMessage(result.contents.errorMessage);					
+						this.collapseContentZone(true);	
+					}
+					this.modified = false;						
+					this.mInitialized = true;
+				]]></body>
+			</method>
+
+			<method name="addThemeSpecialization">
+				<body><![CDATA[
+					var themeId = this.getElementByAnonId('themes').value;
+					if (themeId != '')
+					{
+						var module = this.documentEditor.module;
+						var editor = module.getDocumentEditor('modules_richtext_styledefinitionfortheme');
+						editor.setAttribute('duplicate', 'true');
+						editor.setAttribute('themeId', themeId);
+						module.createDocumentEditor('modules_richtext_styledefinitionfortheme', this.documentEditor.documentid);
+					}
+					else
+					{
+						alert("&amp;modules.richtext.bo.doceditor.Warning-no-theme;");
+					}	
+				]]></body>
+			</method>
+		</implementation>
+	</binding>
+	
+		
+	<!-- Specializations grid -->
+	
+	<binding id="cThemeSpecializationGrid" extends="widgets.cGrid#cAbstractSortableGrid">
+		<implementation>
+			<constructor><![CDATA[
+				this.fireEvent('gridInitialised');
+			]]></constructor>
+
+			<method name="getEditor">
+				<body><![CDATA[	
+					var pnode = this.parentNode;
+					while (pnode && pnode.tagName != 'cdocumenteditor') {pnode = pnode.parentNode;}
+					return pnode;				
+				]]></body>
+			</method>
+
+			<method name="execute_edit">
+				<parameter name="rowNode" />
+				<parameter name="rowData" />
+				<body><![CDATA[
+					if (this.disabled) {return;}
+					// TODO: for now, document editor is correctly loaded only if it is opened on resume panel. When it will be fixed, replace it by the properties one.
+					var uri = ['richtext', 'openDocument', 'modules_richtext_styledefinitionfortheme', rowData.id, 'resume'].join(',');
+					openActionUri(uri);
+				]]></body>
+			</method>
+
+			<method name="execute_delete">
+				<parameter name="rowNode" />
+				<parameter name="rowData" />
+				<body><![CDATA[
+					if (this.disabled) {return;}
+					if (confirm("&amp;modules.richtext.bo.doceditor.Confirm-delete;"))
+					{
+						var editor = this.getEditor();
+						var callBack = function(result) {editor.executeServerAction('styledefinitionfortheme', 'Initialize');};
+						wCore.executeJSON('richtext', 'DeleteJSON', {cmpref: rowData.id, lang: Context.W_LANG}, callBack, true);
+					}
+				]]></body>
+			</method>
+		</implementation>
+
+		<content>
+			<xul:grid flex="1" anonid="grid" xbl:inherits="disabled">
+				<xul:columns>
+					<xul:column flex="1" />
+					<xul:column />
+				</xul:columns>
+				<xul:rows anonid="document-rows">
+					<xul:row class="head" anonid="head-row">
+						<xul:label name="theme" value="&amp;modules.richtext.document.styledefinitionfortheme.Theme;" />
+						<xul:label name="actions" value="&amp;modules.richtext.bo.doceditor.Column-actions;" />
+					</xul:row>
+				</xul:rows>
+			</xul:grid>
+			<xul:row anonid="template-row" class="document" hidden="true">
+				<xul:label value="" />
+				<xul:toolbar class="actions">
+					<xul:toolbarbutton action="edit" image="{IconsBase}/small/edit.png" 
+						tooltiptext="&amp;modules.uixul.bo.actions.Edit;" />
+					<xul:toolbarbutton action="delete" image="{IconsBase}/small/delete.png"
+						tooltiptext="&amp;modules.uixul.bo.actions.Delete;" />
+				</xul:toolbar>
+			</xul:row>
+		</content>
+	</binding>
+</bindings>

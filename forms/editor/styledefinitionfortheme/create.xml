@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel>
+	<section labeli18n="modules.uixul.bo.doceditor.fieldsgroup.Title">
+		<field name="css" class="template" rows="10" cols="100" />
+		<row>
+			<rowlabel value="&amp;modules.richtext.document.styledefinitionfortheme.Globalcss;" />
+			<hbox anonid="globalcss_container" />
+		</row>
+		<fieldinput name="theme" type="hidden"/>
+	</section>
+	<xul>
+		<javascript>
+			<constructor><![CDATA[
+				this.extendMethod('fireInitializeComplete', this.fireInitializeCompleteExtend);
+				
+				var container = this.getElementByAnonId('globalcss_container');
+				var rofield = document.createElementNS('http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul', 'crofield');
+				rofield.setAttribute('fieldtype', 'longtext');
+				rofield.setAttribute('anonid', 'globalcss');
+				container.appendChild(rofield);
+				
+				var rofield = document.createElementNS('http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul', 'spacer');
+				rofield.setAttribute('flex', 1);
+				container.appendChild(rofield);
+			]]></constructor>
+			
+			<method name="getInitializeParameters">
+				<parameter name="attributes" />
+				<body><![CDATA[
+					var attributes =  {
+						action: "DefaultValuesJSON",
+						parentref: this.documentEditor.parentid, 
+						lang: Context.W_LANG, 
+						modelname: this.documentEditor.documentmodelname,
+						documentproperties: this.mFieldNames.join(','),
+						definitionId: this.documentEditor.parentid,
+						themeId: this.documentEditor.getAttribute('themeId')
+					};
+					if ("prepareInitializeValues" in this)
+					{
+						this.prepareInitializeValues(attributes);
+					}
+					return attributes;
+				]]></body>
+			</method>
+			
+			<method name="fireInitializeCompleteExtend">
+				<parameter name="result" />
+				<body><![CDATA[
+					try
+					{
+						var fields = this.fields;
+						this.setTextTemplate(fields.css, result.contents.substitutions);
+						fields.theme.value = this.documentEditor.getAttribute('themeId');
+						this.getElementByAnonId('globalcss').value = result.contents.globalcss;
+					}
+					catch (e)
+					{
+						wCore.error("styledefinitionfortheme.createpanel.fireInitializeCompleteExtend", [result], e);
+					}
+				]]></body>
+			</method>
+			
+			<method name="setTextTemplate">
+				<parameter name="field" />
+				<parameter name="params" />
+				<body><![CDATA[
+					field.clearSubstitutions();
+					for (var i = 0; i < params.length; i++)
+					{
+						field.addSubstitution(params[i].label, params[i].value);
+					}
+				]]></body>
+			</method>
+		</javascript>
+	</xul>
+</panel>

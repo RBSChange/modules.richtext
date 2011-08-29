@@ -1,0 +1,19 @@
+treechildren::-moz-tree-image(modules_richtext_styledefinition){
+	list-style-image: url(/changeicons/small/richtext/heading.png);
+}
+treechildren::-moz-tree-image(modules_richtext_systemstyledefinition){
+	list-style-image: url(/changeicons/small/richtext/heading.png);
+}
+treechildren::-moz-tree-image(modules_richtext_styledefinitionfortheme){
+	list-style-image: url(/changeicons/small/richtext/heading.png);
+}
+
+#edt_richtext_styledefinitionfortheme crofield{
+	background-color: #d4d4ff;	
+	white-space: pre-wrap;
+	width: 533px;
+	margin: 2px 4px;
+}
+#edt_richtext_styledefinitionfortheme crofield label.rocontent{
+	white-space: pre-wrap !important;
+}

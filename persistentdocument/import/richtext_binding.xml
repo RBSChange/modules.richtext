@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script>
+  <binding fileName="modules/generic/persistentdocument/import/generic_binding.xml"/>
+  <binding name="styledefinition" className="richtext_StyledefinitionScriptDocumentElement"/>
+  <binding name="systemstyledefinition" className="richtext_SystemstyledefinitionScriptDocumentElement"/>
+  <binding name="styledefinitionfortheme" className="richtext_StyledefinitionforthemeScriptDocumentElement"/>
+</script>

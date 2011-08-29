@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel>
+	<section labeli18n="modules.uixul.bo.doceditor.fieldsgroup.Title">
+		<field name="css" class="template" rows="10" cols="100" />
+		<row>
+			<rowlabel value="&amp;modules.richtext.document.styledefinitionfortheme.Globalcss;" />
+			<hbox anonid="globalcss_container" />
+		</row>
+	</section>
+	<xul>
+		<javascript>
+			<field name="mApplyUpdatesButton">null</field>
+		
+			<constructor><![CDATA[
+				this.extendMethod('fireInitializeComplete', this.fireInitializeCompleteExtend);
+				this.mApplyUpdatesButton = this.addActionButton('&modules.richtext.bo.actions.ApplyUpdates;', wToolkit.getIcon('check', 'small'));
+				var me = this;
+				this.mApplyUpdatesButton.addEventListener('command', function(event) {me.onApplyUpdates();}, true);			
+				this.extendMethod("updateCommandsUI", this.updateApplyUpdatesUI);
+				
+				var container = this.getElementByAnonId('globalcss_container');
+				var rofield = document.createElementNS('http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul', 'crofield');
+				rofield.setAttribute('fieldtype', 'longtext');
+				rofield.setAttribute('anonid', 'globalcss');
+				container.appendChild(rofield);
+				
+				var rofield = document.createElementNS('http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul', 'spacer');
+				rofield.setAttribute('flex', 1);
+				container.appendChild(rofield);
+			]]></constructor>
+
+			<method name="fireInitializeCompleteExtend">
+				<parameter name="result" />
+				<body><![CDATA[
+					try
+					{
+						this.setTextTemplate(this.fields.css, result.contents.substitutions);
+						this.getElementByAnonId('globalcss').value = result.contents.globalcss;
+					}
+					catch (e)
+					{
+						wCore.error("styledefinitionfortheme.propertiespanel.fireInitializeCompleteExtend", [result], e);
+					}
+				]]></body>
+			</method>
+			
+			<method name="setTextTemplate">
+				<parameter name="field" />
+				<parameter name="params" />
+				<body><![CDATA[
+					field.clearSubstitutions();
+					for (var i = 0; i < params.length; i++)
+					{
+						field.addSubstitution(params[i].label, params[i].value);
+					}
+				]]></body>
+			</method>
+		
+			<method name="updateApplyUpdatesUI">
+				<parameter name="event" />
+				<body><![CDATA[
+					this.mApplyUpdatesButton.disabled = this.modified;
+				]]></body>
+			</method>
+		
+			<method name="onApplyUpdates">
+				<parameter name="event" />
+				<body><![CDATA[
+					this.showTextMessage("&modules.richtext.bo.actions.Applying-updates;");
+					var result = wCore.executeJSON('richtext', 'ApplyUpdates', {}, null, true);
+					if (result.status !== 'OK')
+					{
+						this.showErrorMessage(result.contents.errorMessage);
+						return false;
+					}
+					else
+					{
+						this.showTextMessage("&modules.richtext.bo.actions.Updates-applied;");
+						return true;
+					}
+				]]></body>
+			</method>
+		</javascript>
+	</xul>
+</panel>

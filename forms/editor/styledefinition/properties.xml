@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<panel>
+	<section labeli18n="modules.uixul.bo.doceditor.fieldsgroup.Title">
+		<field name="label" hidehelp="true" />
+		<field name="tagName" />
+		<field name="tagClass" />
+		<field name="isBlock" />
+		<field name="css" rows="10" cols="100" />
+	</section>
+	<xul>
+		<javascript>
+			<field name="mApplyUpdatesButton">null</field>
+
+			<constructor><![CDATA[
+				this.mApplyUpdatesButton = this.addActionButton('&modules.richtext.bo.actions.ApplyUpdates;', wToolkit.getIcon('check', 'small'));
+				var me = this;
+				this.mApplyUpdatesButton.addEventListener('command', function(event) {me.onApplyUpdates();}, true);			
+				this.extendMethod("updateCommandsUI", this.updateApplyUpdatesUI);
+			]]></constructor>
+		
+			<method name="updateApplyUpdatesUI">
+				<parameter name="event" />
+				<body><![CDATA[
+					this.mApplyUpdatesButton.disabled = this.modified;
+				]]></body>
+			</method>
+		
+			<method name="onApplyUpdates">
+				<parameter name="event" />
+				<body><![CDATA[
+					this.showTextMessage("&modules.richtext.bo.actions.Applying-updates;");
+					var result = wCore.executeJSON('richtext', 'ApplyUpdates', {}, null, true);
+					if (result.status !== 'OK')
+					{
+						this.showErrorMessage(result.contents.errorMessage);
+						return false;
+					}
+					else
+					{
+						this.showTextMessage("&modules.richtext.bo.actions.Updates-applied;");
+						return true;
+					}
+				]]></body>
+			</method>
+		</javascript>
+	</xul>
+</panel>

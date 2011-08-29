@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<panels>
+	<panel name="resume" />
+	<panel name="properties" />
+	<panel name="history" />
+	<panel name="create" />
+	<xul>
+		<javascript>
+			<constructor><![CDATA[
+				this.addTab('themespecializations', "&modules.richtext.bo.doceditor.Tab-theme-specializations;", 'theme');
+			]]></constructor>
+		</javascript>
+	</xul>
+</panels>
