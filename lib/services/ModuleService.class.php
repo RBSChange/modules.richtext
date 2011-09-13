@@ -28,6 +28,14 @@ class richtext_ModuleService extends ModuleBaseService
 	public function applyAndRebuild()
 	{
 		$this->applyToPageTemplates();
+		$this->rebuildFiles();		
+	}
+
+	/**
+	 * Apply to all pagetemplates and rebuild richtext.xml and css.
+	 */
+	public function rebuildFiles()
+	{
 		$this->rebuildRichtextXml();
 		$this->rebuildCss();		
 	}
