@@ -28,7 +28,12 @@ class richtext_ModuleService extends ModuleBaseService
 	public function applyAndRebuild()
 	{
 		$this->applyToPageTemplates();
-		$this->rebuildFiles();		
+		$this->rebuildFiles();
+		if (defined('NODE_NAME') && ModuleService::getInstance()->moduleExists('clustersafe'))
+		{
+			$dispatchParams = array('method' => 'rebuildFiles');
+			clustersafe_ModuleService::getInstance()->nodeDispatch('richtext_RebuildListener::onRebuild', $dispatchParams, true);
+		}
 	}
 
 	/**
@@ -37,13 +42,13 @@ class richtext_ModuleService extends ModuleBaseService
 	public function rebuildFiles()
 	{
 		$this->rebuildRichtextXml();
-		$this->rebuildCss();		
+		$this->rebuildCss();
 	}
-	
+
 	/**
 	 * Rebuild the richtext.xml file in build.
 	 */
-	public function rebuildRichtextXml()
+	protected function rebuildRichtextXml()
 	{
 		$output = new XMLWriter();
 		$output->openMemory();
@@ -55,7 +60,7 @@ class richtext_ModuleService extends ModuleBaseService
 			{
 				continue;
 			}
-			
+
 			/* @var $definition richtext_persistentdocument_styledefinition */
 			$output->startElement('style');
 			$output->writeAttribute('tag', $definition->getTagName());
@@ -75,7 +80,7 @@ class richtext_ModuleService extends ModuleBaseService
 		f_util_FileUtils::mkdir($dirPath);
 		$filePath = f_util_FileUtils::buildChangeBuildPath('modules', 'generic', 'config', 'richtext.xml');
 		f_util_FileUtils::write($filePath, $contents, f_util_FileUtils::OVERRIDE);
-		
+
 		// Clear caches.
 		f_util_FileUtils::unlink(f_util_FileUtils::buildCachePath('cleanXHTMLFragment.xsl'));
 	}
@@ -83,31 +88,31 @@ class richtext_ModuleService extends ModuleBaseService
 	/**
 	 * Rebuild the css file in build.
 	 */
-	public function rebuildCss()
+	protected function rebuildCss()
 	{
 		$this->rebuildGlobalCss(false);
 		$this->rebuildThemesCss(false);
 		$this->rebuildDefaultRichTextCss();
-		
+
 		// Clear caches.
 		CacheService::getInstance()->clearCssCache();
 	}
-		
+
 	/**
 	 * Rebuild the css file in build.
 	 * @param boolean $clearCache
 	 */
-	public function rebuildGlobalCss($clearCache = true)
+	protected function rebuildGlobalCss($clearCache = true)
 	{
 		$defaultCSS = '/* Included by rixhtext_<themeCodename>.css */';
-				
+
 		foreach (richtext_StyledefinitionService::getInstance()->createQuery()->find() as $definition)
 		{
 			if ($definition instanceof richtext_persistentdocument_systemstyledefinition)
 			{
 				continue;
 			}
-			
+
 			/* @var $definition richtext_persistentdocument_styledefinition */
 			if ($definition->getCss())
 			{
@@ -127,41 +132,41 @@ class richtext_ModuleService extends ModuleBaseService
 		f_util_FileUtils::mkdir($dirPath);
 		$filePath = f_util_FileUtils::buildChangeBuildPath('modules', 'richtext', 'style', 'richtext.css');
 		f_util_FileUtils::write($filePath, $defaultCSS, f_util_FileUtils::OVERRIDE);
-		
+
 		// Clear caches.
 		if ($clearCache)
 		{
 			CacheService::getInstance()->clearCssCache();
 		}
 	}
-	
+
 	/**
 	 * Rebuild the css files for all themes in build.
 	 * @param boolean $clearCache
 	 */
-	public function rebuildThemesCss($clearCache = true)
+	protected function rebuildThemesCss($clearCache = true)
 	{
-		foreach (theme_ThemeService::getInstance()->createQuery()->find() as $theme)	
+		foreach (theme_ThemeService::getInstance()->createQuery()->find() as $theme)
 		{
 			$this->rebuildThemeCss($theme, false);
 		}
-		
+
 		// Clear caches.
 		if ($clearCache)
 		{
 			CacheService::getInstance()->clearCssCache();
 		}
 	}
-	
+
 	/**
 	 * Rebuild the css file for a given theme in build.
 	 * @param theme_persistentdocument_theme $theme
 	 * @param boolean $clearCache
 	 */
-	public function rebuildThemeCss($theme, $clearCache = true)
+	protected function rebuildThemeCss($theme, $clearCache = true)
 	{
 		$contents = '@import url(/modules/richtext/style/richtext.css);';
-		
+
 		$codeName = $theme->getCodename();
 		foreach (richtext_StyledefinitionforthemeService::getInstance()->getByTheme($theme) as $specilization)
 		{
@@ -185,18 +190,33 @@ class richtext_ModuleService extends ModuleBaseService
 		f_util_FileUtils::mkdir($dirPath);
 		$filePath = f_util_FileUtils::buildChangeBuildPath('modules', 'richtext', 'style', 'richtext_' . $codeName . '.css');
 		f_util_FileUtils::write($filePath, $contents, f_util_FileUtils::OVERRIDE);
-		
+
 		// Clear caches.
 		if ($clearCache)
 		{
 			CacheService::getInstance()->clearCssCache();
 		}
 	}
-	
+
+	protected function rebuildDefaultRichTextCss()
+	{
+		$path = StyleService::getInstance()->getSourceLocation('modules.uixul.cRichtextField');
+		$buildPath = f_util_FileUtils::buildOverridePath('modules', 'uixul', 'style', 'cRichtextField.css');
+		if ($path !== null)
+		{
+			$originalContent = file_get_contents($path);
+			$contents = '@import url(/modules/richtext/style/richtext.css);';
+			if (strpos($originalContent, $contents) === false)
+			{
+				f_util_FileUtils::writeAndCreateContainer($buildPath, $originalContent . PHP_EOL . $contents, f_util_FileUtils::OVERRIDE);
+			}
+		}
+	}
+
 	/**
 	 * Adds the css in all page templates.
 	 */
-	public function applyToPageTemplates()
+	protected function applyToPageTemplates()
 	{
 		foreach (theme_PagetemplateService::getInstance()->createQuery()->find() as $template)
 		{
@@ -204,7 +224,7 @@ class richtext_ModuleService extends ModuleBaseService
 			$this->applyToPageTemplate($template);
 		}
 	}
-	
+
 	/**
 	 * Adds the css in a given page template.
 	 * @param theme_persistentdocument_pagetemplate $template
@@ -222,20 +242,5 @@ class richtext_ModuleService extends ModuleBaseService
 			$template->setCssscreen($template->getCssscreen() . ',' . $css);
 		}
 		$template->save();
-	}
-	
-	public function rebuildDefaultRichTextCss()
-	{
-		$path = StyleService::getInstance()->getSourceLocation('modules.uixul.cRichtextField');
-		$buildPath = f_util_FileUtils::buildOverridePath('modules', 'uixul', 'style', 'cRichtextField.css');			
-		if ($path !== null)
-		{
-			$originalContent = file_get_contents($path);
-			$contents = '@import url(/modules/richtext/style/richtext.css);';
-			if (strpos($originalContent, $contents) === false)
-			{
-				f_util_FileUtils::writeAndCreateContainer($buildPath, $originalContent . PHP_EOL . $contents, f_util_FileUtils::OVERRIDE);
-			}
-		}
 	}
 }

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <listeners>
 	<listener listenerClass="richtext_PageTemplateListener"/>
+	<listener listenerClass="richtext_RebuildListener"/>
 </listeners>
