@@ -92,10 +92,11 @@ class richtext_ModuleService extends ModuleBaseService
 	{
 		$this->rebuildGlobalCss(false);
 		$this->rebuildThemesCss(false);
-		$this->rebuildDefaultRichTextCss();
+		$this->rebuildDefaultRichTextCss(false);
 
 		// Clear caches.
 		CacheService::getInstance()->clearCssCache();
+		CacheService::getInstance()->boShouldBeReloaded();
 	}
 
 	/**
@@ -137,6 +138,7 @@ class richtext_ModuleService extends ModuleBaseService
 		if ($clearCache)
 		{
 			CacheService::getInstance()->clearCssCache();
+			CacheService::getInstance()->boShouldBeReloaded();
 		}
 	}
 
@@ -155,6 +157,7 @@ class richtext_ModuleService extends ModuleBaseService
 		if ($clearCache)
 		{
 			CacheService::getInstance()->clearCssCache();
+			CacheService::getInstance()->boShouldBeReloaded();
 		}
 	}
 
@@ -195,10 +198,11 @@ class richtext_ModuleService extends ModuleBaseService
 		if ($clearCache)
 		{
 			CacheService::getInstance()->clearCssCache();
+			CacheService::getInstance()->boShouldBeReloaded();
 		}
 	}
 
-	protected function rebuildDefaultRichTextCss()
+	protected function rebuildDefaultRichTextCss($clearCache = true)
 	{
 		$path = StyleService::getInstance()->getSourceLocation('modules.uixul.cRichtextField');
 		$buildPath = f_util_FileUtils::buildOverridePath('modules', 'uixul', 'style', 'cRichtextField.css');
@@ -210,6 +214,13 @@ class richtext_ModuleService extends ModuleBaseService
 			{
 				f_util_FileUtils::writeAndCreateContainer($buildPath, $originalContent . PHP_EOL . $contents, f_util_FileUtils::OVERRIDE);
 			}
+		}
+	
+		// Clear caches.
+		if ($clearCache)
+		{
+			CacheService::getInstance()->clearCssCache();
+			CacheService::getInstance()->boShouldBeReloaded();
 		}
 	}
 
