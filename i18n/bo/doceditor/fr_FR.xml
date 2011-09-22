@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.richtext.bo.doceditor" lcid="fr_FR">
+  <key id="tab-theme-specializations">spécialisations par thème</key>
+  <key id="button-add-specialization">spécialiser</key>
+  <key id="warning-no-theme">Vous devez sélectionner un thème.</key>
+  <key id="confirm-delete">Êtes-vous sûr de vouloir supprimer cette spécialisation ?</key>
+  <key id="column-actions">actions</key>
+  <key id="skin-var">variable d'habillage</key>
+</i18n>

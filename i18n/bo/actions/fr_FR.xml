@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.richtext.bo.actions" lcid="fr_FR">
+	<key id="create_">créer</key>
+	<key id="createstyledefinition">créer une définition de style</key>
+	<key id="createstyledefinitionfortheme">décliner une définition de style pour un thème</key>
+	<key id="import">importer les définitions codées en dur</key>
+	<key id="applyupdates">appliquer les changements</key>
+	<key id="applying-updates">Application des changements...</key>
+	<key id="updates-applied">Changement appliquées.</key>
+</i18n>

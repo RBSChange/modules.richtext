@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<localization extend="modules.richtext.document.styledefinition">
-	<entity id="document-name">
-		<locale lang="fr">définition de style codée en dur</locale>
-	</entity>
-</localization>

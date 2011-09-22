@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.richtext.bo.useractionlogger" lcid="fr_FR">
+  <key id="insert-styledefinition">insert.styledefinition {documentlabel}</key>
+  <key id="log-insert-styledefinition">log-insert-styledefinition</key>
+  <key id="update-styledefinition">update.styledefinition {documentlabel}</key>
+  <key id="log-update-styledefinition">log-update-styledefinition</key>
+  <key id="activate-styledefinition">activate.styledefinition {documentlabel}</key>
+  <key id="log-activate-styledefinition">log-activate-styledefinition</key>
+  <key id="delete-styledefinition">delete.styledefinition {documentlabel}</key>
+  <key id="log-delete-styledefinition">log-delete-styledefinition</key>
+  <key id="insert-styledefinitionfortheme">insert.styledefinitionfortheme {documentlabel}</key>
+  <key id="log-insert-styledefinitionfortheme">log-insert-styledefinitionfortheme</key>
+  <key id="update-styledefinitionfortheme">update.styledefinitionfortheme {documentlabel}</key>
+  <key id="log-update-styledefinitionfortheme">log-update-styledefinitionfortheme</key>
+  <key id="delete-styledefinitionfortheme">delete.styledefinitionfortheme {documentlabel}</key>
+  <key id="log-delete-styledefinitionfortheme">log-delete-styledefinitionfortheme</key>
+  <key id="move-systemfolder">move.systemfolder {destinationlabel} {documentlabel}</key>
+  <key id="log-move-systemfolder">log-move-systemfolder</key>
+  <key id="insert-folder">insert.folder {documentlabel}</key>
+  <key id="log-insert-folder">log-insert-folder</key>
+</i18n>
