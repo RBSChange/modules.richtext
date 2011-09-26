@@ -64,21 +64,18 @@ class richtext_ModuleService extends ModuleBaseService
 			/* @var $definition richtext_persistentdocument_styledefinition */
 			$output->startElement('style');
 			$output->writeAttribute('tag', $definition->getTagName());
-			$output->writeAttribute('label', $definition->getLabelForBlocksXml());
+			$output->writeAttribute('class', $definition->getTagClass());
 			$output->writeAttribute('block', $definition->getIsBlock() ? 'true' : 'false');
-			$output->startElement('attribute');
-			$output->writeAttribute('name', 'class');
-			$output->writeAttribute('value', $definition->getTagClass());
-			$output->endElement();
+			$output->writeAttribute('label', $definition->getLabelForBlocksXml());
 			$output->endElement();
 		}
 		$output->endElement();
 		$output->endDocument();
 		$contents = $output->outputMemory(true);
 
-		$dirPath = f_util_FileUtils::buildChangeBuildPath('modules', 'generic', 'config');
+		$dirPath = f_util_FileUtils::buildChangeBuildPath('modules', 'richtext', 'config');
 		f_util_FileUtils::mkdir($dirPath);
-		$filePath = f_util_FileUtils::buildChangeBuildPath('modules', 'generic', 'config', 'richtext.xml');
+		$filePath = f_util_FileUtils::buildChangeBuildPath('modules', 'richtext', 'config', 'richtext.xml');
 		f_util_FileUtils::write($filePath, $contents, f_util_FileUtils::OVERRIDE);
 
 		// Clear caches.
@@ -92,7 +89,6 @@ class richtext_ModuleService extends ModuleBaseService
 	{
 		$this->rebuildGlobalCss(false);
 		$this->rebuildThemesCss(false);
-		$this->rebuildDefaultRichTextCss(false);
 
 		// Clear caches.
 		CacheService::getInstance()->clearCssCache();
@@ -105,7 +101,7 @@ class richtext_ModuleService extends ModuleBaseService
 	 */
 	protected function rebuildGlobalCss($clearCache = true)
 	{
-		$defaultCSS = '/* Included by rixhtext_<themeCodename>.css */';
+		$defaultCSS = '/* Included by richtext_<themeCodename>.css */';
 
 		foreach (richtext_StyledefinitionService::getInstance()->createQuery()->find() as $definition)
 		{
@@ -194,28 +190,6 @@ class richtext_ModuleService extends ModuleBaseService
 		$filePath = f_util_FileUtils::buildChangeBuildPath('modules', 'richtext', 'style', 'richtext_' . $codeName . '.css');
 		f_util_FileUtils::write($filePath, $contents, f_util_FileUtils::OVERRIDE);
 
-		// Clear caches.
-		if ($clearCache)
-		{
-			CacheService::getInstance()->clearCssCache();
-			CacheService::getInstance()->boShouldBeReloaded();
-		}
-	}
-
-	protected function rebuildDefaultRichTextCss($clearCache = true)
-	{
-		$path = StyleService::getInstance()->getSourceLocation('modules.uixul.cRichtextField');
-		$buildPath = f_util_FileUtils::buildOverridePath('modules', 'uixul', 'style', 'cRichtextField.css');
-		if ($path !== null)
-		{
-			$originalContent = file_get_contents($path);
-			$contents = '@import url(/modules/richtext/style/richtext.css);';
-			if (strpos($originalContent, $contents) === false)
-			{
-				f_util_FileUtils::writeAndCreateContainer($buildPath, $originalContent . PHP_EOL . $contents, f_util_FileUtils::OVERRIDE);
-			}
-		}
-	
 		// Clear caches.
 		if ($clearCache)
 		{

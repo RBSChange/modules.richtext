@@ -96,7 +96,7 @@ class richtext_StyledefinitionService extends f_persistentdocument_DocumentServi
 		// Check CSS.
 		try 
 		{
-			$sheet = new f_web_CSSStylesheet();
+			$sheet = new website_CSSStylesheet();
 			$sheet->loadCSS($document->getCss());
 		}
 		catch (Exception $e)
@@ -121,5 +121,16 @@ class richtext_StyledefinitionService extends f_persistentdocument_DocumentServi
 		$resume['properties']['tagClass'] = $document->getTagClass();
 		
 		return $resume;
+	}
+	
+	/**
+	 * @param richtext_persistentdocument_styledefinition $document
+	 * @param string $moduleName
+	 * @param string $treeType
+	 * @param array<string, string> $nodeAttributes
+	 */
+	public function addTreeAttributes($document, $moduleName, $treeType, &$nodeAttributes)
+	{
+		$nodeAttributes['tagType'] = $document->getTagTypeUILabel();
 	}
 }

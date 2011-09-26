@@ -6,29 +6,11 @@
 class richtext_persistentdocument_styledefinition extends richtext_persistentdocument_styledefinitionbase 
 {
 	/**
-	 * @param string $moduleName
-	 * @param string $treeType
-	 * @param array<string, string> $nodeAttributes
-	 */
-	protected function addTreeAttributes($moduleName, $treeType, &$nodeAttributes)
-	{
-		$nodeAttributes['tagType'] = $this->getTagTypeUILabel();
-	}
-	
-	/**
-	 * @param string $actionType
-	 * @param array $formProperties
-	 */
-//	public function addFormProperties($propertiesNames, &$formProperties)
-//	{	
-//	}
-
-	/**
 	 * @return string
 	 */
 	public function getTagTypeUILabel()
 	{
-		return f_Locale::translateUI('&modules.richtext.document.styledefinition.Type-' . ($this->getIsBlock() ? 'block' : 'inline') . ';');
+		return LocaleService::getInstance()->transBO('m.richtext.document.styledefinition.type-' . ($this->getIsBlock() ? 'block' : 'inline'), array('ucf'));
 	}
 	
 	/**

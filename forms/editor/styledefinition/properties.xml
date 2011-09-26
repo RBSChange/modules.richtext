@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <panel>
-	<section labeli18n="modules.uixul.bo.doceditor.fieldsgroup.Title">
+	<section labeli18n="m.uixul.bo.doceditor.fieldsgroup.title">
 		<field name="label" hidehelp="true" />
 		<field name="tagName" />
 		<field name="tagClass" />
@@ -12,7 +12,7 @@
 			<field name="mApplyUpdatesButton">null</field>
 
 			<constructor><![CDATA[
-				this.mApplyUpdatesButton = this.addActionButton('&modules.richtext.bo.actions.ApplyUpdates;', wToolkit.getIcon('check', 'small'));
+				this.mApplyUpdatesButton = this.addActionButton("${transui:m.richtext.bo.actions.applyupdates,js,ucf}", wToolkit.getIcon('check', 'small'));
 				var me = this;
 				this.mApplyUpdatesButton.addEventListener('command', function(event) {me.onApplyUpdates();}, true);			
 				this.extendMethod("updateCommandsUI", this.updateApplyUpdatesUI);

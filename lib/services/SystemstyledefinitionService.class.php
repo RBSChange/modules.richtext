@@ -80,15 +80,7 @@ class richtext_SystemstyledefinitionService extends richtext_StyledefinitionServ
 		foreach ($styles as $style)
 		{
 			$tagName = $style->getAttribute('tag');
-			$tagClass = null;
-			foreach ($style->getElementsByTagName('attribute') as $attrNode)
-			{
-				if ($attrNode->getAttribute('name') == 'class')
-				{
-					$tagClass = $attrNode->getAttribute('value');
-				}
-			}
-			
+			$tagClass = $style->getAttribute('class');
 			if (!$tagName || !$tagClass)
 			{
 				Framework::error(__METHOD__ . ": style has no 'tag' or 'class' attribute");
@@ -107,8 +99,8 @@ class richtext_SystemstyledefinitionService extends richtext_StyledefinitionServ
 				continue;
 			}
 			
-			$isBlock = ($style->hasAttribute('block') && $style->getAttribute('block') == 'false') ? false : true; 
-			$label = $style->hasAttribute('label') ? $style->getAttribute('label') : ($tagName . '.' . $tagClass);
+			$isBlock = ($style->getAttribute('block') == 'false') ? false : true; 
+			$label = $style->hasAttribute('labeli18n') ? $style->getAttribute('labeli18n') : $style->getAttribute('label');
 			$doc->setIsBlock($isBlock);
 			$doc->setLabel($label);	
 			$doc->save(ModuleService::getInstance()->getSystemFolderId('richtext', 'website'));

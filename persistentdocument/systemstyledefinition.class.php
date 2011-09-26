@@ -10,19 +10,12 @@ class richtext_persistentdocument_systemstyledefinition extends richtext_persist
 	 */
 	public function getLabel()
 	{
+		$ls = LocaleService::getInstance();
 		$label = parent::getLabel();
-		if (f_Locale::isLocaleKey($label))
+		if ($ls->isKey($label))
 		{
-			return f_Locale::translateUI($label);
+			return $ls->transBO($label);
 		}
 		return $label;
-	}
-	
-	/**
-	 * @return string
-	 */
-	public function getLabelForBlocksXml()
-	{
-		return str_replace('&modules.', '&ampmodules.', parent::getLabel());
 	}
 }

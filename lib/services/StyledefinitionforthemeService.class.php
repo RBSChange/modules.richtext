@@ -105,7 +105,7 @@ class richtext_StyledefinitionforthemeService extends f_persistentdocument_Docum
 		// Check CSS.
 		try 
 		{
-			$sheet = new f_web_CSSStylesheet();
+			$sheet = new website_CSSStylesheet();
 			$sheet->loadCSS($document->getCss());
 		}
 		catch (Exception $e)
@@ -125,5 +125,48 @@ class richtext_StyledefinitionforthemeService extends f_persistentdocument_Docum
 	protected function preInsert($document, $parentNodeId)
 	{
 		$document->setInsertInTree(false);
+	}
+	
+	/**
+	 * @param richtext_persistentdocument_styledefinitionfortheme $document
+	 * @param string[] $propertiesName
+	 * @param array $datas
+	 * @param integer $parentId
+	 */
+	public function addFormProperties($document, $propertiesName, &$datas, $parentId = null)
+	{	
+		// In case of a new doc, set theme and definition to be able to get substitutions.
+		if ($document->isNew())
+		{
+			$globalRequest = change_Controller::getInstance()->getContext()->getRequest();
+			if ($document->getTheme() === null && $globalRequest->hasParameter('themeId'))
+			{
+				$document->setTheme(theme_persistentdocument_theme::getInstanceById($globalRequest->getParameter('themeId')));
+			}
+			if ($document->getDefinition() === null && $globalRequest->hasParameter('definitionId'))
+			{
+				$document->setDefinition(richtext_persistentdocument_styledefinition::getInstanceById($globalRequest->getParameter('definitionId')));
+			}
+		}
+		
+		$ls = LocaleService::getInstance();
+		$definition = $document->getDefinition();
+		$jsonSkinVars = array();
+		$jsonSkinVars[] = array('value' => $definition->getCSSSelector(), 'label' => $ls->transBO('m.richtext.document.styledefinition.css-selector', array('ucf')));
+		if ($document->getTheme())
+		{
+			$themeName = $document->getTheme()->getCodename();
+			foreach ($document->getVarsInfos() as $name => $varInfos)
+			{
+				$jsonSkinVars[] = array('value' => '/*@var '.$name.'*/', 'label' => $ls->transBO('m.richtext.bo.doceditor.skin-var', array('ucf', 'lab')) . ' ' . $ls->transBO("t.$themeName.skin.$name") . ' (' . $varInfos['ini'] . ')');
+			}
+		}
+		else
+		{
+			Framework::info(__METHOD__ . ' no theme');
+		}
+		$datas['substitutions'] = $jsonSkinVars;
+		
+		$datas['globalcss'] = $definition->getCss();
 	}
 }

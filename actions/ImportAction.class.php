@@ -3,7 +3,7 @@
  * richtext_ImportAction
  * @package modules.richtext.actions
  */
-class richtext_ImportAction extends f_action_BaseJSONAction
+class richtext_ImportAction extends change_JSONAction
 {
 	/**
 	 * @return Boolean
@@ -14,8 +14,8 @@ class richtext_ImportAction extends f_action_BaseJSONAction
 	}
 
 	/**
-	 * @param Context $context
-	 * @param Request $request
+	 * @param change_Context $context
+	 * @param change_Request $request
 	 */
 	public function _execute($context, $request)
 	{
