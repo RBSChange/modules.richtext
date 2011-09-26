@@ -15,6 +15,9 @@
 	<entity id="column.tagtype">
 		<locale lang="fr">type</locale>
 	</entity>
+	<entity id="forbidden-tagname">
+		<locale lang="fr">La balise '{tagName}' n'est pas autorisée.</locale>
+	</entity>
 	<entity id="tagname-and-class-conflict">
 		<locale lang="fr">Il y a déjà une définition de style pour la balise '{tagName}' et la classe '{tagClass}'.</locale>
 	</entity>
