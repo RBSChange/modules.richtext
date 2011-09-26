@@ -78,14 +78,29 @@ class richtext_StyledefinitionService extends f_persistentdocument_DocumentServi
 	}
 	
 	/**
+	 * @param string $tagName
+	 * @return boolean
+	 */
+	protected function isTagNameAllowed($tagName)
+	{
+		return !in_array($tagName, array('div'));
+	}
+	
+	/**
 	 * @param richtext_persistentdocument_styledefinition $document
 	 * @param Integer $parentNodeId Parent node ID where to save the document (optionnal => can be null !).
 	 * @return void
 	 */
 	protected function preSave($document, $parentNodeId)
 	{
-		// Check tag and class conflicts.
+		// Check forbidden tag names.
 		$tagName = $document->getTagName();
+		if (!$this->isTagNameAllowed($tagName))
+		{
+			throw new BaseException('This tag name is forbidden', 'modules.richtext.bo.general.forbidden-tagname', array('tagName' => $tagName));
+		}
+		
+		// Check tag and class conflicts.
 		$tagClass = $document->getTagClass();
 		$styledef = $this->getByTagNameAndTagClass($tagName, $document->getTagClass());
 		if ($styledef !== null && $styledef->getId() !== $document->getId())
