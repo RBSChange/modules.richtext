@@ -28,7 +28,7 @@
 		<locale lang="fr">code CSS</locale>
 	</entity>
 	<entity id="css-help">
-		<locale lang="fr">Code CSS associé à ce style.</locale>
+		<locale lang="fr">Code CSS valide et complet (sélecteurs compris) associé à ce style. Exemple : p.monstyle { background: green; border: 1px solid black; }</locale>
 	</entity>
 	<entity id="tagtype">
 		<locale lang="fr">type</locale>
