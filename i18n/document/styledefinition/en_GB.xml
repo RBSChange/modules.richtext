@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.richtext.document.styledefinition" lcid="en_GB">
+  <key id="css">CSS code</key>
+  <key id="css-help">CSS code associated with this style.</key>
+  <key id="css-selector">CSS selector for this definition</key>
+  <key id="document-name">style definition</key>
+  <key id="isblock">block style</key>
+  <key id="isblock-help">Check 'yes' for a block style and 'no' for an inline style.</key>
+  <key id="label">label</key>
+  <key id="tagclass">class</key>
+  <key id="tagclass-help">CSS class to which the style must be applied. The tag/class pair must be unique.</key>
+  <key id="tagname">tag</key>
+  <key id="tagname-help">HTML tag to which the style must be applied. The tag/class pair must be unique.</key>
+  <key id="tagtype">type</key>
+  <key id="type-block">block</key>
+  <key id="type-inline">inline</key>
+</i18n>

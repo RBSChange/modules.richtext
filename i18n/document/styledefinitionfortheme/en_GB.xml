@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.richtext.document.styledefinitionfortheme" lcid="en_GB">
+  <key id="css">CSS code</key>
+  <key id="css-help">CSS code associated with this style.</key>
+  <key id="definition">definition</key>
+  <key id="definition-help">Style definition specialised by this document.</key>
+  <key id="document-name">specialisation of a style definition by theme</key>
+  <key id="globalcss">global CSS code</key>
+  <key id="globalcss-help">CSS code associated with this style independent of the theme.</key>
+  <key id="label">label</key>
+  <key id="theme">theme</key>
+  <key id="theme-help">Theme to which this specialisation applies.</key>
+</i18n>

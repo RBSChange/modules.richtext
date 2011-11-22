@@ -3,7 +3,7 @@
 	<section labeli18n="modules.uixul.bo.doceditor.fieldsgroup.Title">
 		<field name="css" class="template" rows="10" cols="100" />
 		<row>
-			<rowlabel value="&amp;modules.richtext.document.styledefinitionfortheme.Globalcss;" />
+			<rowlabel value="${transui:m.richtext.document.styledefinitionfortheme.Globalcss,ucf,attr}" />
 			<hbox anonid="globalcss_container" />
 		</row>
 	</section>

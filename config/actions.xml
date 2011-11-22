@@ -15,14 +15,14 @@
 	<action name="applyUpdates">
 		<parameter name="listWidget" />
 		<body><![CDATA[
-			getController().alert("&amp;modules.richtext.bo.actions.Applying-updates;");
+			getController().alert("${transui:m.richtext.bo.actions.Applying-updates,ucf,js}");
 			this.executeJSON("ApplyUpdates", {lang: this.getContextLang()});
 		]]></body>
 	</action>
 	<action name="onApplyUpdatesSuccess">
 		<parameter name="result" />
 		<body><![CDATA[
-			getController().alert("&amp;modules.richtext.bo.actions.Updates-applied;");
+			getController().alert("${transui:m.richtext.bo.actions.Updates-applied,ucf,js}");
 		]]></body>
 	</action>
 	<action name="createStyledefinitionfortheme">

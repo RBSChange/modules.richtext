@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.richtext.bo.general" lcid="en_GB">
+  <key id="defintion-and-theme-conflict">There is already a specialisation of this style definition in the '{theme}' theme.</key>
+  <key id="invalid-css">The CSS code that you entered is invalid. The following error was returned: {message}</key>
+  <key id="module-name">richtext</key>
+  <key id="system-folder-name">richtext</key>
+  <key id="tagname-and-class-conflict">There is already a style definition for the '{tagName}' tag and the '{tagClass}' class.</key>
+</i18n>

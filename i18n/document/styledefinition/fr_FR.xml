@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <i18n baseKey="m.richtext.document.styledefinition" lcid="fr_FR">
-	<key id="document-name">définition de style</key>
-	<key id="label">libellé</key>
-	<key id="tagname">balise</key>
-	<key id="tagname-help">Balise HTML sur laquelle appliquer le style. Le couple balise / classe doit être unique.</key>
-	<key id="tagclass">classe</key>
-	<key id="tagclass-help">Classe CSS sur laquelle appliquer le style. Le couple balise / classe doit être unique.</key>
-	<key id="isblock">style de bloc</key>
-	<key id="isblock-help">Cocher oui pour un style de type bloc et non pour un style en ligne.</key>
-	<key id="css">code CSS</key>
-	<key id="css-help">Code CSS valide et complet (sélecteurs compris) associé à ce style. Exemple : p.monstyle { background: green; border: 1px solid black; }</key>
-	<key id="tagtype">type</key>
-	<key id="type-block">bloc</key>
-	<key id="type-inline">en ligne</key>
-	<key id="css-selector">sélecteur CSS de cette définition</key>
+  <key id="document-name">définition de style</key>
+  <key id="label">libellé</key>
+  <key id="tagname">balise</key>
+  <key id="tagname-help">Balise HTML sur laquelle appliquer le style. Le couple balise / classe doit être unique.</key>
+  <key id="tagclass">classe</key>
+  <key id="tagclass-help">Classe CSS sur laquelle appliquer le style. Le couple balise / classe doit être unique.</key>
+  <key id="isblock">style de bloc</key>
+  <key id="isblock-help">Cocher oui pour un style de type bloc et non pour un style en ligne.</key>
+  <key id="css">code CSS</key>
+  <key id="css-help">Code CSS associé à ce style.</key>
+  <key id="tagtype">type</key>
+  <key id="type-block">bloc</key>
+  <key id="type-inline">en ligne</key>
+  <key id="css-selector">sélecteur CSS de cette définition</key>
 </i18n>

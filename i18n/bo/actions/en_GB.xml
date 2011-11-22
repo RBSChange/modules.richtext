@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.richtext.bo.actions" lcid="en_GB">
+  <key id="applying-updates">Changes are being applied…</key>
+  <key id="applyupdates">apply the changes</key>
+  <key id="create_">create</key>
+  <key id="createstyledefinition">create style definition</key>
+  <key id="createstyledefinitionfortheme">create style definition for a theme</key>
+  <key id="import">import hardcoded definitions</key>
+  <key id="updates-applied">Changes were applied.</key>
+</i18n>
