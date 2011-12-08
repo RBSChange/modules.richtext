@@ -139,13 +139,16 @@ class richtext_StyledefinitionService extends f_persistentdocument_DocumentServi
 	}
 	
 	/**
-	 * @param richtext_persistentdocument_styledefinition $document
+	 * @param website_persistentdocument_topic $document
+	 * @param array<string, string> $attributes
+	 * @param integer $mode
 	 * @param string $moduleName
-	 * @param string $treeType
-	 * @param array<string, string> $nodeAttributes
 	 */
-	public function addTreeAttributes($document, $moduleName, $treeType, &$nodeAttributes)
+	public function completeBOAttributes($document, &$attributes, $mode, $moduleName)
 	{
-		$nodeAttributes['tagType'] = $document->getTagTypeUILabel();
+		if ($mode & DocumentHelper::MODE_CUSTOM)
+		{
+			$attributes['tagType'] = $document->getTagTypeUILabel();
+		}
 	}
 }
