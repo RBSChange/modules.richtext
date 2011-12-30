@@ -7,7 +7,6 @@ class commands_richtext_RebuildFiles extends commands_AbstractChangeCommand
 {
 	/**
 	 * @return String
-	 * @example "<moduleName> <name>"
 	 */
 	public function getUsage()
 	{
@@ -16,7 +15,6 @@ class commands_richtext_RebuildFiles extends commands_AbstractChangeCommand
 
 	/**
 	 * @return String
-	 * @example "initialize a document"
 	 */
 	public function getDescription()
 	{
