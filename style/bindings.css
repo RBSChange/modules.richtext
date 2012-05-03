@@ -1,6 +1,3 @@
-#edt_richtext_styledefinition cthemespecializationspanel {
-	-moz-binding: url(binding:modules.richtext.cEditor#cThemeSpecializationPanel);
-}
 cthemespecializationspanel cthemespecializationgrid {
-	-moz-binding: url(binding:modules.richtext.cEditor#cThemeSpecializationGrid);
+	-moz-binding: url(binding:modules.richtext.editor.styledefinition.themespecializations#cThemeSpecializationGrid);
 }
