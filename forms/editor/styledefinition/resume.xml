@@ -8,9 +8,6 @@
 		<property name="tagName" labeli18n="m.richtext.document.styledefinition.tagname" />
 		<property name="tagClass" labeli18n="m.richtext.document.styledefinition.tagclass" />
 	</section>
-	<section name="localization" linkedtab="localization" labeli18n="m.uixul.bo.doceditor.section.localization" image="{IconsBase}/small/translate.png">
-		<property name="languages" type="langs" labeli18n="m.uixul.bo.doceditor.property.languages" />
-	</section>
 	<section name="history" linkedtab="history" actiontexti18n="m.uixul.bo.doceditor.section.action.view" labeli18n="m.uixul.bo.doceditor.section.history"
 		image="{IconsBase}/small/history.png">
 		<property name="modificationdate" labeli18n="m.uixul.bo.doceditor.property.modificationdate" />

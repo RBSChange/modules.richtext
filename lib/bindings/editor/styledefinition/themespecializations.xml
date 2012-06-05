@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <bindings xmlns="http://www.mozilla.org/xbl" xmlns:xbl="http://www.mozilla.org/xbl" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-	<binding id="cThemeSpecializationPanel" extends="layout.cDocumentEditor#cDocumentEditorPanel">
+	
+	<binding id="styledefinition_themespecializations" extends="layout.cDocumentEditor#cDocumentEditorPanel">
 		<resources>
 			<stylesheet src="modules.uixul.cEditorGrid" />
 			<stylesheet src="modules.catalog.cEditorList" />
@@ -13,7 +14,7 @@
 						<xul:menulist anonid="themes" style="min-width: 250px;">
 							<xul:menupopup anonid="themeslist" />
 						</xul:menulist>
-						<xul:button disabled="true" anonid="addspecializationbutton" label="&amp;modules.richtext.bo.doceditor.Button-add-specialization;"
+						<xul:button disabled="true" anonid="addspecializationbutton" label="${transui:m.richtext.bo.doceditor.Button-add-specialization,ucf,attr}"
 							oncommand="addThemeSpecialization()" />
 					</xul:hbox>
 					<xul:scrollbox anonid="scrollctrl" flex="1" class="editordatacontainer" orient="vertical">
@@ -101,7 +102,7 @@
 					}
 					else
 					{
-						alert("&amp;modules.richtext.bo.doceditor.Warning-no-theme;");
+						alert("${transui:m.richtext.bo.doceditor.Warning-no-theme,ucf,js}");
 					}	
 				]]></body>
 			</method>
@@ -141,7 +142,7 @@
 				<parameter name="rowData" />
 				<body><![CDATA[
 					if (this.disabled) {return;}
-					if (confirm("&amp;modules.richtext.bo.doceditor.Confirm-delete;"))
+					if (confirm("${transui:m.richtext.bo.doceditor.Confirm-delete,ucf,js}"))
 					{
 						var editor = this.getEditor();
 						var callBack = function(result) {editor.executeServerAction('styledefinitionfortheme', 'Initialize');};
@@ -159,8 +160,8 @@
 				</xul:columns>
 				<xul:rows anonid="document-rows">
 					<xul:row class="head" anonid="head-row">
-						<xul:label name="theme" value="&amp;modules.richtext.document.styledefinitionfortheme.Theme;" />
-						<xul:label name="actions" value="&amp;modules.richtext.bo.doceditor.Column-actions;" />
+						<xul:label name="theme" value="${transui:m.richtext.document.styledefinitionfortheme.Theme,ucf,attr}" />
+						<xul:label name="actions" value="${transui:m.richtext.bo.doceditor.Column-actions,ucf,attr}" />
 					</xul:row>
 				</xul:rows>
 			</xul:grid>
@@ -168,9 +169,9 @@
 				<xul:label value="" />
 				<xul:toolbar class="actions">
 					<xul:toolbarbutton action="edit" image="{IconsBase}/small/edit.png" 
-						tooltiptext="&amp;modules.uixul.bo.actions.Edit;" />
+						tooltiptext="${transui:m.uixul.bo.actions.Edit,ucf,attr}" />
 					<xul:toolbarbutton action="delete" image="{IconsBase}/small/delete.png"
-						tooltiptext="&amp;modules.uixul.bo.actions.Delete;" />
+						tooltiptext="${transui:m.uixul.bo.actions.Delete,ucf,attr}" />
 				</xul:toolbar>
 			</xul:row>
 		</content>
