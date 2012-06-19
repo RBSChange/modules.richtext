@@ -14,7 +14,7 @@ class richtext_persistentdocument_systemstyledefinition extends richtext_persist
 		$label = parent::getLabel();
 		if ($ls->isKey($label))
 		{
-			return $ls->transBO($label);
+			return $ls->trans($label);
 		}
 		return $label;
 	}

@@ -10,7 +10,7 @@ class richtext_persistentdocument_styledefinition extends richtext_persistentdoc
 	 */
 	public function getTagTypeUILabel()
 	{
-		return LocaleService::getInstance()->transBO('m.richtext.document.styledefinition.type-' . ($this->getIsBlock() ? 'block' : 'inline'), array('ucf'));
+		return LocaleService::getInstance()->trans('m.richtext.document.styledefinition.type-' . ($this->getIsBlock() ? 'block' : 'inline'), array('ucf'));
 	}
 	
 	/**

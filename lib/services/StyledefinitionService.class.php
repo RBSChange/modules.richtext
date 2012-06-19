@@ -1,6 +1,5 @@
 <?php
 /**
- * richtext_StyledefinitionService
  * @package modules.richtext
  * @method richtext_StyledefinitionService getInstance()
  */
@@ -22,7 +21,7 @@ class richtext_StyledefinitionService extends f_persistentdocument_DocumentServi
 	 */
 	public function createQuery()
 	{
-		return $this->pp->createQuery('modules_richtext/styledefinition');
+		return $this->getPersistentProvider()->createQuery('modules_richtext/styledefinition');
 	}
 	
 	/**
@@ -33,7 +32,7 @@ class richtext_StyledefinitionService extends f_persistentdocument_DocumentServi
 	 */
 	public function createStrictQuery()
 	{
-		return $this->pp->createQuery('modules_richtext/styledefinition', false);
+		return $this->getPersistentProvider()->createQuery('modules_richtext/styledefinition', false);
 	}
 	
 	/**
@@ -72,7 +71,7 @@ class richtext_StyledefinitionService extends f_persistentdocument_DocumentServi
 	
 	/**
 	 * @param richtext_persistentdocument_styledefinition $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document (optionnal => can be null !).
+	 * @param integer $parentNodeId Parent node ID where to save the document (optionnal => can be null !).
 	 * @return void
 	 */
 	protected function preSave($document, $parentNodeId)

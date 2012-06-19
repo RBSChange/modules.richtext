@@ -3,11 +3,11 @@
  * commands_richtext_RebuildFiles
  * @package modules.richtext.command
  */
-class commands_richtext_RebuildFiles extends commands_AbstractChangeCommand
+class commands_richtext_RebuildFiles extends c_ChangescriptCommand
 {
 	/**
-	 * @return String
-	 * @example "<moduleName> <name>"
+	 * @return string
+	 * For exemple "<moduleName> <name>"
 	 */
 	public function getUsage()
 	{
@@ -15,8 +15,8 @@ class commands_richtext_RebuildFiles extends commands_AbstractChangeCommand
 	}
 
 	/**
-	 * @return String
-	 * @example "initialize a document"
+	 * @return string
+	 * For exemple "initialize a document"
 	 */
 	public function getDescription()
 	{
@@ -24,7 +24,7 @@ class commands_richtext_RebuildFiles extends commands_AbstractChangeCommand
 	}
 
 	/**
-	 * @param String[] $params
+	 * @param string[] $params
 	 * @param array<String, String> $options where the option array key is the option name, the potential option value or true
 	 * @see c_ChangescriptCommand::parseArgs($args)
 	 */

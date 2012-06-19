@@ -10,10 +10,9 @@
 	<xul>
 		<javascript>
 			<field name="mApplyUpdatesButton">null</field>
-		
 			<constructor><![CDATA[
 				this.extendMethod('fireInitializeComplete', this.fireInitializeCompleteExtend);
-				this.mApplyUpdatesButton = this.addActionButton("${transui:m.richtext.bo.actions.applyupdates,js,ucf}", wToolkit.getIcon('check', 'small'));
+				this.mApplyUpdatesButton = this.addActionButton("${trans:m.richtext.bo.actions.applyupdates,js,ucf}", wToolkit.getIcon('check', 'small'));
 				var me = this;
 				this.mApplyUpdatesButton.addEventListener('command', function(event) {me.onApplyUpdates();}, true);			
 				this.extendMethod("updateCommandsUI", this.updateApplyUpdatesUI);
@@ -28,7 +27,6 @@
 				rofield.setAttribute('flex', 1);
 				container.appendChild(rofield);
 			]]></constructor>
-
 			<method name="fireInitializeCompleteExtend">
 				<parameter name="result" />
 				<body><![CDATA[
@@ -43,7 +41,6 @@
 					}
 				]]></body>
 			</method>
-			
 			<method name="setTextTemplate">
 				<parameter name="field" />
 				<parameter name="params" />
@@ -55,14 +52,12 @@
 					}
 				]]></body>
 			</method>
-		
 			<method name="updateApplyUpdatesUI">
 				<parameter name="event" />
 				<body><![CDATA[
 					this.mApplyUpdatesButton.disabled = this.modified;
 				]]></body>
 			</method>
-		
 			<method name="onApplyUpdates">
 				<parameter name="event" />
 				<body><![CDATA[

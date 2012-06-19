@@ -6,7 +6,7 @@
 			<rowlabel value="&amp;modules.richtext.document.styledefinitionfortheme.Globalcss;" />
 			<hbox anonid="globalcss_container" />
 		</row>
-		<fieldinput name="theme" type="hidden"/>
+		<fieldinput name="theme" type="hidden" />
 	</section>
 	<xul>
 		<javascript>
@@ -23,11 +23,10 @@
 				rofield.setAttribute('flex', 1);
 				container.appendChild(rofield);
 			]]></constructor>
-			
 			<method name="getInitializeParameters">
 				<parameter name="attributes" />
 				<body><![CDATA[
-					var attributes =  {
+					var attributes =	{
 						action: "DefaultValuesJSON",
 						parentref: this.documentEditor.parentid, 
 						lang: Context.W_LANG, 
@@ -43,7 +42,6 @@
 					return attributes;
 				]]></body>
 			</method>
-			
 			<method name="fireInitializeCompleteExtend">
 				<parameter name="result" />
 				<body><![CDATA[
@@ -60,7 +58,6 @@
 					}
 				]]></body>
 			</method>
-			
 			<method name="setTextTemplate">
 				<parameter name="field" />
 				<parameter name="params" />

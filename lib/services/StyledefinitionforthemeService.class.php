@@ -1,6 +1,5 @@
 <?php
 /**
- * richtext_StyledefinitionforthemeService
  * @package modules.richtext
  * @method richtext_StyledefinitionforthemeService getInstance()
  */
@@ -22,7 +21,7 @@ class richtext_StyledefinitionforthemeService extends f_persistentdocument_Docum
 	 */
 	public function createQuery()
 	{
-		return $this->pp->createQuery('modules_richtext/styledefinitionfortheme');
+		return $this->getPersistentProvider()->createQuery('modules_richtext/styledefinitionfortheme');
 	}
 	
 	/**
@@ -33,7 +32,7 @@ class richtext_StyledefinitionforthemeService extends f_persistentdocument_Docum
 	 */
 	public function createStrictQuery()
 	{
-		return $this->pp->createQuery('modules_richtext/styledefinitionfortheme', false);
+		return $this->getPersistentProvider()->createQuery('modules_richtext/styledefinitionfortheme', false);
 	}
 	
 	/**
@@ -65,7 +64,7 @@ class richtext_StyledefinitionforthemeService extends f_persistentdocument_Docum
 	
 	/**
 	 * @param richtext_persistentdocument_styledefinitionfortheme $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document (optionnal => can be null !).
+	 * @param integer $parentNodeId Parent node ID where to save the document (optionnal => can be null !).
 	 * @return void
 	 */
 	protected function preSave($document, $parentNodeId)
@@ -103,7 +102,7 @@ class richtext_StyledefinitionforthemeService extends f_persistentdocument_Docum
 
 	/**
 	 * @param richtext_persistentdocument_styledefinitionfortheme $document
-	 * @param Integer $parentNodeId Parent node ID where to save the document.
+	 * @param integer $parentNodeId Parent node ID where to save the document.
 	 * @return void
 	 */
 	protected function preInsert($document, $parentNodeId)
@@ -136,13 +135,13 @@ class richtext_StyledefinitionforthemeService extends f_persistentdocument_Docum
 		$ls = LocaleService::getInstance();
 		$definition = $document->getDefinition();
 		$jsonSkinVars = array();
-		$jsonSkinVars[] = array('value' => $definition->getCSSSelector(), 'label' => $ls->transBO('m.richtext.document.styledefinition.css-selector', array('ucf')));
+		$jsonSkinVars[] = array('value' => $definition->getCSSSelector(), 'label' => $ls->trans('m.richtext.document.styledefinition.css-selector', array('ucf')));
 		if ($document->getTheme())
 		{
 			$themeName = $document->getTheme()->getCodename();
 			foreach ($document->getVarsInfos() as $name => $varInfos)
 			{
-				$jsonSkinVars[] = array('value' => '/*@var '.$name.'*/', 'label' => $ls->transBO('m.richtext.bo.doceditor.skin-var', array('ucf', 'lab')) . ' ' . $ls->transBO("t.$themeName.skin.$name") . ' (' . $varInfos['ini'] . ')');
+				$jsonSkinVars[] = array('value' => '/*@var '.$name.'*/', 'label' => $ls->trans('m.richtext.bo.doceditor.skin-var', array('ucf', 'lab')) . ' ' . $ls->trans("t.$themeName.skin.$name") . ' (' . $varInfos['ini'] . ')');
 			}
 		}
 		else

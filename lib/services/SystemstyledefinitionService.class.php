@@ -1,6 +1,5 @@
 <?php
 /**
- * richtext_SystemstyledefinitionService
  * @package modules.richtext
  * @method richtext_SystemstyledefinitionService getInstance()
  */
@@ -22,7 +21,7 @@ class richtext_SystemstyledefinitionService extends richtext_StyledefinitionServ
 	 */
 	public function createQuery()
 	{
-		return $this->pp->createQuery('modules_richtext/systemstyledefinition');
+		return $this->getPersistentProvider()->createQuery('modules_richtext/systemstyledefinition');
 	}
 	
 	/**
@@ -33,7 +32,7 @@ class richtext_SystemstyledefinitionService extends richtext_StyledefinitionServ
 	 */
 	public function createStrictQuery()
 	{
-		return $this->pp->createQuery('modules_richtext/systemstyledefinition', false);
+		return $this->getPersistentProvider()->createQuery('modules_richtext/systemstyledefinition', false);
 	}
 	
 	/**

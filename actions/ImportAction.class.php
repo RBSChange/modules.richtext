@@ -6,7 +6,7 @@
 class richtext_ImportAction extends change_JSONAction
 {
 	/**
-	 * @return Boolean
+	 * @return boolean
 	 */
 	protected function isDocumentAction()
 	{
