@@ -1,27 +1,10 @@
 <?php
 /**
- * @package modules.richtext.lib.services
+ * @package modules.richtext
+ * @method richtext_ModuleService getInstance()
  */
 class richtext_ModuleService extends ModuleBaseService
 {
-	/**
-	 * Singleton
-	 * @var richtext_ModuleService
-	 */
-	private static $instance = null;
-
-	/**
-	 * @return richtext_ModuleService
-	 */
-	public static function getInstance()
-	{
-		if (is_null(self::$instance))
-		{
-			self::$instance = self::getServiceClassInstance(get_class());
-		}
-		return self::$instance;
-	}
-
 	/**
 	 * Apply to all pagetemplates and rebuild richtext.xml and css.
 	 */

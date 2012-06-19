@@ -2,26 +2,10 @@
 /**
  * richtext_StyledefinitionforthemeService
  * @package modules.richtext
+ * @method richtext_StyledefinitionforthemeService getInstance()
  */
 class richtext_StyledefinitionforthemeService extends f_persistentdocument_DocumentService
 {
-	/**
-	 * @var richtext_StyledefinitionforthemeService
-	 */
-	private static $instance;
-
-	/**
-	 * @return richtext_StyledefinitionforthemeService
-	 */
-	public static function getInstance()
-	{
-		if (self::$instance === null)
-		{
-			self::$instance = self::getServiceClassInstance(get_class());
-		}
-		return self::$instance;
-	}
-
 	/**
 	 * @return richtext_persistentdocument_styledefinitionfortheme
 	 */

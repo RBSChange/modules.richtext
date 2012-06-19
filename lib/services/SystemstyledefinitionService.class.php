@@ -2,26 +2,10 @@
 /**
  * richtext_SystemstyledefinitionService
  * @package modules.richtext
+ * @method richtext_SystemstyledefinitionService getInstance()
  */
 class richtext_SystemstyledefinitionService extends richtext_StyledefinitionService
 {
-	/**
-	 * @var richtext_SystemstyledefinitionService
-	 */
-	private static $instance;
-
-	/**
-	 * @return richtext_SystemstyledefinitionService
-	 */
-	public static function getInstance()
-	{
-		if (self::$instance === null)
-		{
-			self::$instance = self::getServiceClassInstance(get_class());
-		}
-		return self::$instance;
-	}
-
 	/**
 	 * @return richtext_persistentdocument_systemstyledefinition
 	 */
