@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document xmlns="http://www.rbs.fr/schema/change-document/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rbs.fr/schema/change-document/1.0 http://www.rbschange.fr/static/schema/change-document/4.0.xsd" model-version="1.0" has-url="false" use-publication-dates="false" backoffice-indexable="false" icon="richtext/heading">
+<document xmlns="http://www.rbs.fr/schema/change-document/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rbs.fr/schema/change-document/1.0 http://www.rbschange.fr/schema/persistentdocument-4.0.xsd" model-version="1.0" has-url="false" use-publication-dates="false" backoffice-indexable="false" icon="richtext/heading">
 	<properties>
-		<property name="definition" type="modules_richtext/styledefinition" min-occurs="1" />
-		<property name="theme" type="modules_theme/theme" min-occurs="1" />
+		<property name="definition" type="Document" min-occurs="1" document-type="modules_richtext/styledefinition" />
+		<property name="theme" type="Document" min-occurs="1" document-type="modules_theme/theme" />
 		<property name="css" type="LongString" />
 	</properties>
 	<statuses default="ACTIVE" />
