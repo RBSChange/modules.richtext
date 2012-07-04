@@ -22,6 +22,16 @@ class commands_richtext_RebuildFiles extends c_ChangescriptCommand
 	{
 		return "rebuild xml and css files";
 	}
+	
+	/**
+	 * @see c_ChangescriptCommand::getEvents()
+	 */
+	public function getEvents()
+	{
+		return array(
+			array('target' => 'compile-all'),
+		);
+	}
 
 	/**
 	 * @param string[] $params
@@ -30,7 +40,7 @@ class commands_richtext_RebuildFiles extends c_ChangescriptCommand
 	 */
 	public function _execute($params, $options)
 	{
-		$this->message("== RebuildFiles ==");
+		$this->message("== Rebuild xml and css files for richtext ==");
 
 		richtext_ModuleService::getInstance()->rebuildFiles();
 
