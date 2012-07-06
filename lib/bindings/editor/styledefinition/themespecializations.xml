@@ -14,7 +14,7 @@
 						<xul:menulist anonid="themes" style="min-width: 250px;">
 							<xul:menupopup anonid="themeslist" />
 						</xul:menulist>
-						<xul:button disabled="true" anonid="addspecializationbutton" label="${transui:m.richtext.bo.doceditor.Button-add-specialization,ucf,attr}"
+						<xul:button disabled="true" anonid="addspecializationbutton" label="${trans:m.richtext.bo.doceditor.button-add-specialization,ucf,attr}"
 							oncommand="addThemeSpecialization()" />
 					</xul:hbox>
 					<xul:scrollbox anonid="scrollctrl" flex="1" class="editordatacontainer" orient="vertical">
@@ -102,7 +102,7 @@
 					}
 					else
 					{
-						alert("${transui:m.richtext.bo.doceditor.Warning-no-theme,ucf,js}");
+						alert("${trans:m.richtext.bo.doceditor.warning-no-theme,ucf,js}");
 					}	
 				]]></body>
 			</method>
@@ -142,7 +142,7 @@
 				<parameter name="rowData" />
 				<body><![CDATA[
 					if (this.disabled) {return;}
-					if (confirm("${transui:m.richtext.bo.doceditor.Confirm-delete,ucf,js}"))
+					if (confirm("${trans:m.richtext.bo.doceditor.confirm-delete,ucf,js}"))
 					{
 						var editor = this.getEditor();
 						var callBack = function(result) {editor.executeServerAction('styledefinitionfortheme', 'Initialize');};
@@ -160,8 +160,8 @@
 				</xul:columns>
 				<xul:rows anonid="document-rows">
 					<xul:row class="head" anonid="head-row">
-						<xul:label name="theme" value="${transui:m.richtext.document.styledefinitionfortheme.Theme,ucf,attr}" />
-						<xul:label name="actions" value="${transui:m.richtext.bo.doceditor.Column-actions,ucf,attr}" />
+						<xul:label name="theme" value="${trans:m.richtext.document.styledefinitionfortheme.theme,ucf,attr}" />
+						<xul:label name="actions" value="${trans:m.richtext.bo.doceditor.column-actions,ucf,attr}" />
 					</xul:row>
 				</xul:rows>
 			</xul:grid>
@@ -169,9 +169,9 @@
 				<xul:label value="" />
 				<xul:toolbar class="actions">
 					<xul:toolbarbutton action="edit" image="{IconsBase}/small/edit.png" 
-						tooltiptext="${transui:m.uixul.bo.actions.Edit,ucf,attr}" />
+						tooltiptext="${trans:m.uixul.bo.actions.edit,ucf,attr}" />
 					<xul:toolbarbutton action="delete" image="{IconsBase}/small/delete.png"
-						tooltiptext="${transui:m.uixul.bo.actions.Delete,ucf,attr}" />
+						tooltiptext="${trans:m.uixul.bo.actions.delete,ucf,attr}" />
 				</xul:toolbar>
 			</xul:row>
 		</content>

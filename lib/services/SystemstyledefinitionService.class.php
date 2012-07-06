@@ -40,9 +40,8 @@ class richtext_SystemstyledefinitionService extends richtext_StyledefinitionServ
 	 */
 	public function importFromRichtextXml()
 	{
-		$buildPath = f_util_FileUtils::buildChangeBuildPath();
-		
-		$paths = FileResolver::getInstance()->setPackageName('modules_website')->setDirectory('config')->getPaths('richtext.xml');
+		$buildPath = f_util_FileUtils::buildChangeBuildPath();		
+		$paths = change_FileResolver::getNewInstance()->getPaths('modules', 'website', 'config', 'richtext.xml');
 		while (f_util_StringUtils::beginsWith(f_util_ArrayUtils::firstElement($paths), $buildPath))
 		{
 			array_shift($paths);

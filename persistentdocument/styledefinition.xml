@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document xmlns="http://www.rbs.fr/schema/change-document/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rbs.fr/schema/change-document/1.0 http://www.rbschange.fr/static/schema/change-document/4.0.xsd" model-version="1.0" has-url="false" use-publication-dates="false" icon="richtext/heading">
+<document xmlns="http://www.rbs.fr/schema/change-document/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.rbs.fr/schema/change-document/1.0 http://www.rbschange.fr/schema/persistentdocument-4.0.xsd" model-version="1.0" has-url="false" use-publication-dates="false" icon="richtext/heading">
 	<properties>
-		<property name="tagName" type="String" min-occurs="1" />
-		<property name="tagClass" type="String" min-occurs="1" />
+		<property name="tagName" type="String" required="true" />
+		<property name="tagClass" type="String" required="true" />
 		<property name="isBlock" type="Boolean" default-value="true" />
 		<property name="css" type="LongString" />
 	</properties>

@@ -61,7 +61,7 @@
 			<method name="onApplyUpdates">
 				<parameter name="event" />
 				<body><![CDATA[
-					this.showTextMessage("&modules.richtext.bo.actions.Applying-updates;");
+					this.showTextMessage("${trans:m.richtext.bo.actions.applying-updates,ucf,js}");
 					var result = wCore.executeJSON('richtext', 'ApplyUpdates', {}, null, true);
 					if (result.status !== 'OK')
 					{
@@ -70,7 +70,7 @@
 					}
 					else
 					{
-						this.showTextMessage("&modules.richtext.bo.actions.Updates-applied;");
+						this.showTextMessage("${trans:m.richtext.bo.actions.updates-applied,ucf,js}");
 						return true;
 					}
 				]]></body>

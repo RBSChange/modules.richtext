@@ -28,7 +28,7 @@
 	<action name="createStyledefinitionfortheme">
 		<parameter name="listWidget" />
 		<body><![CDATA[
-	    	var id = listWidget.getSelectedIds()[0];
+			var id = listWidget.getSelectedIds()[0];
 			var uri = ['richtext', 'openDocument', 'modules_richtext_styledefinitionfortheme', id, 'themespecialization'].join(',');
 			openActionUri(uri);
 		]]></body>

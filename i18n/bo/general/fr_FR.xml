@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <i18n baseKey="m.richtext.bo.general" lcid="fr_FR">
-  <key id="module-name">richtext</key>
-  <key id="system-folder-name">richtext</key>
-  <key id="forbidden-tagname">La balise '{tagName}' n'est pas autorisée.</key>
-  <key id="tagname-and-class-conflict">Il y a déjà une définition de style pour la balise '{tagName}' et la classe '{tagClass}'.</key>
-  <key id="defintion-and-theme-conflict">Il y a déjà une spécialisation de cette définition de style le thème '{theme}'.</key>
-  <key id="invalid-css">Le code CSS saisi est invalide. L'erreur retournée est la suivante : {message}</key>
+	<key id="module-name">richtext</key>
+	<key id="system-folder-name">richtext</key>
+	<key id="forbidden-tagname">La balise '{tagName}' n'est pas autorisée.</key>
+	<key id="tagname-and-class-conflict">Il y a déjà une définition de style pour la balise '{tagName}' et la classe '{tagClass}'.</key>
+	<key id="defintion-and-theme-conflict">Il y a déjà une spécialisation de cette définition de style le thème '{theme}'.</key>
+	<key id="invalid-css">Le code CSS saisi est invalide. L'erreur retournée est la suivante : {message}</key>
 </i18n>

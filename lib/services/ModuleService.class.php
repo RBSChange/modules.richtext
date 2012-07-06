@@ -62,7 +62,7 @@ class richtext_ModuleService extends ModuleBaseService
 		f_util_FileUtils::write($filePath, $contents, f_util_FileUtils::OVERRIDE);
 
 		// Clear caches.
-		f_util_FileUtils::unlink(f_util_FileUtils::buildCachePath('cleanXHTMLFragment.xsl'));
+		f_util_FileUtils::unlink(f_util_FileUtils::buildChangeCachePath('cleanXHTMLFragment.xsl'));
 	}
 
 	/**
