@@ -14,14 +14,6 @@ class richtext_persistentdocument_styledefinition extends richtext_persistentdoc
 	{
 		$nodeAttributes['tagType'] = $this->getTagTypeUILabel();
 	}
-	
-	/**
-	 * @param string $actionType
-	 * @param array $formProperties
-	 */
-//	public function addFormProperties($propertiesNames, &$formProperties)
-//	{	
-//	}
 
 	/**
 	 * @return string
