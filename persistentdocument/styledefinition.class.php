@@ -1,7 +1,6 @@
 <?php
 /**
- * Class where to put your custom methods for document richtext_persistentdocument_styledefinition
- * @package modules.richtext.persistentdocument
+ * @package modules.richtext
  */
 class richtext_persistentdocument_styledefinition extends richtext_persistentdocument_styledefinitionbase 
 {

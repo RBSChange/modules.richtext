@@ -1,7 +1,6 @@
 <?php
 /**
- * Class where to put your custom methods for document richtext_persistentdocument_styledefinitionfortheme
- * @package modules.richtext.persistentdocument
+ * @package modules.richtext
  */
 class richtext_persistentdocument_styledefinitionfortheme extends richtext_persistentdocument_styledefinitionforthemebase 
 {
@@ -13,7 +12,7 @@ class richtext_persistentdocument_styledefinitionfortheme extends richtext_persi
 	/**
 	 * @return array
 	 */
-	private function getVarsInfos()
+	public function getVarsInfos()
 	{
 		if ($this->varsInfos === null)
 		{
