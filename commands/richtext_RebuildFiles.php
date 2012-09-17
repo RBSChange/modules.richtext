@@ -42,6 +42,7 @@ class commands_richtext_RebuildFiles extends c_ChangescriptCommand
 	{
 		$this->message("== Rebuild xml and css files for richtext ==");
 
+		$this->loadFramework();
 		richtext_ModuleService::getInstance()->rebuildFiles();
 
 		$this->quitOk("Command successfully executed");
