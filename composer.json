@@ -1,0 +1,6 @@
+{
+	"name": "rbschange/richtext",
+	"description": "RBS Change Richtext module",
+	"type": "rbschange-compatibility-module",
+	"license":"AGPL-3.0"
+}
